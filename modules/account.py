@@ -55,7 +55,7 @@ class Account:
 
         return amount_wei, amount, balance
 
-    async def wait_until_tx_finished(self, tx_hash: HexBytes, max_wait_time=180):
+    async def wait_until_tx_finished(self, tx_hash: HexBytes, max_wait_time=300):
         start_time = time.time()
         while True:
             try:

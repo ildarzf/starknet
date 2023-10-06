@@ -79,6 +79,9 @@ class ZkLend(Starknet):
 
             await self.withdraw_all(token)
 
+        res = transaction_response
+        return res
+
     @retry
     @check_gas
     async def withdraw_all(self, use_token: Union[str, List]):
@@ -102,8 +105,13 @@ class ZkLend(Starknet):
             transaction_response = await self.send_transaction(transaction)
 
             await self.wait_until_tx_finished(transaction_response.transaction_hash)
+
+            res = transaction_response
+            return res
         else:
             logger.error(f"[{self._id}][{hex(self.address)}] Deposit not found")
+
+
 
     @retry
     @check_gas
@@ -124,6 +132,9 @@ class ZkLend(Starknet):
 
         await self.wait_until_tx_finished(transaction_response.transaction_hash)
 
+        res = transaction_response
+        return res
+
     @retry
     @check_gas
     async def disable_collateral(self, use_token: List):
@@ -142,3 +153,6 @@ class ZkLend(Starknet):
         transaction_response = await self.send_transaction(transaction)
 
         await self.wait_until_tx_finished(transaction_response.transaction_hash)
+
+        res = transaction_response
+        return res

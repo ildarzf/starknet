@@ -82,3 +82,6 @@ class SithSwap(Starknet):
         transaction_response = await self.send_transaction(transaction)
 
         await self.wait_until_tx_finished(transaction_response.transaction_hash)
+
+        res = transaction_response
+        return res

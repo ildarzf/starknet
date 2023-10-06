@@ -28,9 +28,10 @@ class Dmail(Starknet):
             selector=get_selector_from_name("transaction"),
             calldata=[email_address[0:31], theme[0:31]],
         )
-
         transaction = await self.sign_transaction([dmail_call])
-
         transaction_response = await self.send_transaction(transaction)
 
         await self.wait_until_tx_finished(transaction_response.transaction_hash)
+
+        res = transaction_response
+        return res

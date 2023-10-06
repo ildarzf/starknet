@@ -12,8 +12,13 @@ def retry(func):
                 result = await func(*args, **kwargs)
                 return result
             except Exception as e:
-                logger.error(f"Error | {e}")
-                sleep(10, 60)
-                retries += 1
+                if 'Client failed with code -32603' in str(e):
+                    logger.error(f"Error short info | Client failed with code -32603")
+                    sleep(10, 25)
+                    retries += 1
+                else:
+                    logger.error(f"Error | {e}")
+                    sleep(10, 25)
+                    retries += 1
 
     return wrapper

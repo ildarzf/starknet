@@ -79,11 +79,11 @@ async def swap_avnu(_id, key, type_account):
     """
 
     from_token = "ETH"
-    to_token = "USDC"
+    to_token = "DAI"
 
-    min_amount = 0.0001
-    max_amount = 0.0001
-    decimal = 4
+    min_amount = 0.0005
+    max_amount = 0.001
+    decimal = 5
     slippage = 1
 
     all_amount = False
@@ -92,10 +92,10 @@ async def swap_avnu(_id, key, type_account):
     max_percent = 100
 
     avnu = Avnu(_id, key, type_account)
-    await avnu.swap(
+    res = await avnu.swap(
         from_token, to_token, min_amount, max_amount, decimal, slippage, all_amount, min_percent, max_percent
     )
-
+    return res
 
 async def swap_jediswap(_id, key, type_account):
     """
@@ -109,24 +109,24 @@ async def swap_jediswap(_id, key, type_account):
     all_amount - swap from min_percent to max_percent
     """
 
-    from_token = "USDC"
-    to_token = "ETH"
+    from_token = "ETH"
+    to_token = "USDC"
 
-    min_amount = 0.001
-    max_amount = 0.002
+    min_amount = 0.0005
+    max_amount = 0.001
     decimal = 6
     slippage = 1
 
-    all_amount = True
+    all_amount = False
 
     min_percent = 100
     max_percent = 100
 
     jediswap = Jediswap(_id, key, type_account)
-    await jediswap.swap(
+    res = await jediswap.swap(
         from_token, to_token, min_amount, max_amount, decimal, slippage, all_amount, min_percent, max_percent
     )
-
+    return res
 
 async def swap_myswap(_id, key, type_account):
     """
@@ -143,21 +143,21 @@ async def swap_myswap(_id, key, type_account):
     from_token = "ETH"
     to_token = "USDC"
 
-    min_amount = 0.001
-    max_amount = 0.002
+    min_amount = 0.0005
+    max_amount = 0.001
     decimal = 6
     slippage = 1
 
-    all_amount = True
+    all_amount = False
 
     min_percent = 5
     max_percent = 10
 
     myswap = MySwap(_id, key, type_account)
-    await myswap.swap(
+    res = await myswap.swap(
         from_token, to_token, min_amount, max_amount, decimal, slippage, all_amount, min_percent, max_percent
     )
-
+    return res
 
 async def swap_starkswap(_id, key, type_account):
     """
@@ -171,28 +171,59 @@ async def swap_starkswap(_id, key, type_account):
     all_amount - swap from min_percent to max_percent
     """
 
-    from_token = "USDC"
-    to_token = "ETH"
+    from_token = "ETH"
+    to_token = "USDC"
 
-    min_amount = 0.001
-    max_amount = 0.002
+    min_amount = 0.0005
+    max_amount = 0.001
     decimal = 6
     slippage = 1
 
-    all_amount = True
+    all_amount = False
 
     min_percent = 100
     max_percent = 100
 
     starkswap = StarkSwap(_id, key, type_account)
-    await starkswap.swap(
+    res = await starkswap.swap(
         from_token, to_token, min_amount, max_amount, decimal, slippage, all_amount, min_percent, max_percent
     )
-
+    return res
 
 async def swap_sithswap(_id, key, type_account):
     """
     Make swap on SithSwap
+    ______________________________________________________
+    from_token – Choose SOURCE token ETH, USDC, DAI | Select one
+    to_token – Choose DESTINATION token ETH, USDC, DAI | Select one
+
+    Disclaimer - You can swap only ETH to any token or any token to ETH!
+    ______________________________________________________
+    all_amount - swap from min_percent to max_percent
+    """
+
+    from_token = "ETH"
+    to_token = "USDC"
+
+    min_amount = 0.0005
+    max_amount = 0.001
+    decimal = 6
+    slippage = 1
+
+    all_amount = False
+
+    min_percent = 5
+    max_percent = 10
+
+    sithswap = SithSwap(_id, key, type_account)
+    res = await sithswap.swap(
+        from_token, to_token, min_amount, max_amount, decimal, slippage, all_amount, min_percent, max_percent
+    )
+    return res
+
+async def swap_protoss(_id, key, type_account):
+    """
+    Make swap on Protoss
     ______________________________________________________
     from_token – Choose SOURCE token ETH, USDC, DAI | Select one
     to_token – Choose DESTINATION token ETH, USDC, DAI | Select one
@@ -210,47 +241,16 @@ async def swap_sithswap(_id, key, type_account):
     decimal = 6
     slippage = 1
 
-    all_amount = True
-
-    min_percent = 5
-    max_percent = 10
-
-    sithswap = SithSwap(_id, key, type_account)
-    await sithswap.swap(
-        from_token, to_token, min_amount, max_amount, decimal, slippage, all_amount, min_percent, max_percent
-    )
-
-
-async def swap_protoss(_id, key, type_account):
-    """
-    Make swap on Protoss
-    ______________________________________________________
-    from_token – Choose SOURCE token ETH, USDC, DAI | Select one
-    to_token – Choose DESTINATION token ETH, USDC, DAI | Select one
-
-    Disclaimer - You can swap only ETH to any token or any token to ETH!
-    ______________________________________________________
-    all_amount - swap from min_percent to max_percent
-    """
-
-    from_token = "USDC"
-    to_token = "ETH"
-
-    min_amount = 0.001
-    max_amount = 0.002
-    decimal = 6
-    slippage = 1
-
-    all_amount = True
+    all_amount = False
 
     min_percent = 5
     max_percent = 10
 
     protoss = Protoss(_id, key, type_account)
-    await protoss.swap(
+    res = await protoss.swap(
         from_token, to_token, min_amount, max_amount, decimal, slippage, all_amount, min_percent, max_percent
     )
-
+    return res
 
 async def swap_fibrous(_id, key, type_account):
     """
@@ -272,16 +272,16 @@ async def swap_fibrous(_id, key, type_account):
     decimal = 6
     slippage = 1
 
-    all_amount = True
+    all_amount = False
 
     min_percent = 1
     max_percent = 1
 
     fibrous = Fibrous(_id, key, type_account)
-    await fibrous.swap(
+    res = await fibrous.swap(
         from_token, to_token, min_amount, max_amount, decimal, slippage, all_amount, min_percent, max_percent
     )
-
+    return res
 
 async def deposit_zklend(_id, key, type_account):
     """
@@ -293,28 +293,28 @@ async def deposit_zklend(_id, key, type_account):
     all_amount - deposit from min_percent to max_percent
     """
 
-    use_token = ["ETH", "DAI", "USDC"]
+    use_token = ["ETH"]
 
-    min_amount = 0.0001
-    max_amount = 0.0002
+    min_amount = 0.001
+    max_amount = 0.002
     decimal = 5
 
-    sleep_from = 20
-    sleep_to = 120
+    sleep_from = 66
+    sleep_to = 150
 
     make_withdraw = True
 
-    all_amount = True
+    all_amount = False
 
-    min_percent = 10
+    min_percent = 20
     max_percent = 50
 
     zklend = ZkLend(_id, key, type_account)
-    await zklend.deposit(
+    res = await zklend.deposit(
         use_token, min_amount, max_amount, decimal, sleep_from,
         sleep_to, make_withdraw, all_amount, min_percent, max_percent
     )
-
+    return res
 
 async def withdraw_zklend(_id, key, type_account):
     """
@@ -323,11 +323,11 @@ async def withdraw_zklend(_id, key, type_account):
     use_token – random choice token for withdraw ["ETH", "DAI", "USDC"], you can use only one token ["ETH"]
     """
 
-    use_token = ["ETH", "DAI", "USDC"]
+    use_token = ["ETH"]
 
     zklend = ZkLend(_id, key, type_account)
-    await zklend.withdraw_all(use_token)
-
+    res = await zklend.withdraw_all(use_token)
+    return res
 
 async def enable_collateral_zklend(_id, key, type_account):
     """
@@ -339,7 +339,8 @@ async def enable_collateral_zklend(_id, key, type_account):
     use_token = ["ETH", "DAI", "USDC"]
 
     zklend = ZkLend(_id, key, type_account)
-    await zklend.enable_collateral(use_token)
+    res = await zklend.enable_collateral(use_token)
+    return res
 
 
 async def disable_collateral_zklend(_id, key, type_account):
@@ -349,11 +350,11 @@ async def disable_collateral_zklend(_id, key, type_account):
     use_token – random choice token ["ETH", "DAI", "USDC"], you can use only one token ["ETH"]
     """
 
-    use_token = ["DAI"]
+    use_token = ["DAI", "USDC"]
 
     zklend = ZkLend(_id, key, type_account)
-    await zklend.disable_collateral(use_token)
-
+    res = await zklend.disable_collateral(use_token)
+    return res
 
 async def make_transfer(_id, key, type_account, recipient):
     """
@@ -457,23 +458,24 @@ async def custom_routes(account_id, key, type_account):
 
 async def mint_starknet_id(_id, key, type_account):
     starknet_id = StarknetId(_id, key, type_account)
-    await starknet_id.mint()
-
+    res = await starknet_id.mint()
+    return res
 
 async def send_mail_dmail(_id, key, type_account):
     dmail = Dmail(_id, key, type_account)
-    await dmail.send_mail()
-
+    res = await dmail.send_mail()
+    return res
 
 async def mint_starkverse(_id, key, type_account):
     starkverse = StarkVerse(_id, key, type_account)
-    await starkverse.mint()
+    res = await starkverse.mint()
+    return res
 
 
 async def create_collection_pyramid(_id, key, type_account):
     pyramid = Pyramid(_id, key, type_account)
-    await pyramid.mint()
-
+    res = await pyramid.mint()
+    return res
 
 def get_tx_count(type_account):
     asyncio.run(check_tx(type_account))
