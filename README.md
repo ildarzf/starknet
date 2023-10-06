@@ -1,4 +1,4 @@
-<h1 align="center">Starknet Soft</h1>
+<h1 align="center">FORK Starknet Soft</h1>
 
 НАДСТРОЙКА
 
