@@ -16,6 +16,7 @@ async def get_route(from_token: int, to_token: int, amount: int):
             "amount": hex(amount),
             "tokenInAddress": hex(from_token),
             "tokenOutAddress": hex(to_token),
+            "excludeProtocols": 5
         }
 
         response = await session.get(url=url, params=params)
