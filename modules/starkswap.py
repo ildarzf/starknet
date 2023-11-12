@@ -12,7 +12,7 @@ class StarkSwap(Starknet):
     def __init__(self, _id: int, private_key: str, type_account: str) -> None:
         super().__init__(_id=_id, private_key=private_key, type_account=type_account)
 
-        self.contract = self.get_contract(STARKSWAP_CONTRACT, STARKSWAP_ABI)
+        self.contract = self.get_contract(STARKSWAP_CONTRACT, STARKSWAP_ABI,1)
 
     async def get_min_amount_out(self, amount: int, slippage: float, path: list):
         min_amount_out_data = await self.contract.functions["getAmountsOut"].prepare(

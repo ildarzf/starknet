@@ -97,14 +97,7 @@ class Starknet:
 
         return address
 
-    def get_contract(self, contract_address: int, abi: Union[dict, None] = None):
-        if abi is None:
-            abi = ERC20_ABI
-
-        contract = Contract(address=contract_address, abi=abi, provider=self.account)
-
-        return contract
-    def get_contract_nft(self, contract_address: int, abi: Union[dict, None] = None, cairo_version: int = 0):
+    def get_contract(self, contract_address: int, abi: Union[dict, None] = None, cairo_version: int = 1):
         if abi is None:
             abi = ERC20_ABI
 
