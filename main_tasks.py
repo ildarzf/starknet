@@ -21,21 +21,25 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS completed_tasks (
                  )''')
 
 tasks = [
-        "Starknet ID",
-        "Enable collateral ZkLend",
-        "Disable collateral ZkLend",
-        "Mint StarkVerse NFT",
-        "Mint NFT on Pyramid",
-        "Dmail send mail",
-        "JediSwap",
-        "MySwap",
-        "10kSwap",
-        "SithSwap",
-        "Avnu",
-        "Protoss",
-        "Fibrous",
-        "Deposit ZkLend"
+         #"Starknet ID",
+         #"Enable collateral ZkLend",
+         #"Disable collateral ZkLend",
+        # "Mint StarkVerse NFT",
+        # "Mint NFT on Pyramid",
+         #"Dmail send mail",
+        # "JediSwap",
+        # "MySwap",
+        # "10kSwap",
+        # "SithSwap",
+        # "Avnu",
+        # "Protoss",
+        # #"Fibrous",
+        # "Deposit ZkLend",
+         "Unframed",
+         "Flex",
+         "StarkStars NFT"
     ]
+
 
 
 
@@ -90,6 +94,16 @@ def execute_random_task(ethereum_address, cursor, conn, try_again):
         if task_to_execute == 'Deposit ZkLend':
             module = deposit_zklend
             res = run_module(module, id, key)
+        if task_to_execute == 'Unframed':
+            module = cancel_order_unframed
+            res = run_module(module, id, key)  
+        if task_to_execute == 'Flex':
+            module = cancel_order_flex
+            res = run_module(module, id, key)
+        if task_to_execute == 'StarkStars NFT':
+            module = mint_starkstars
+            res = run_module(module, id, key)
+
         if 'code=None' in str(res):
             mark_task_as_completed(task_to_execute, ethereum_address, cursor, conn)
         else:
@@ -99,6 +113,9 @@ def execute_random_task(ethereum_address, cursor, conn, try_again):
                 execute_random_task(ethereum_address, cursor, conn, try_again)
             else:
                 logger.warning('Не получилось выполнить. Попробую при следующем запуске')
+        tm = random.randint(110, 300)
+        logger.info(f'Спим {tm}')
+        time.sleep(tm)  # задержка
     else:
         logger.success(f"Кошелек Starknet {ethereum_address}: Все задачи выполнены!")
 
@@ -117,7 +134,7 @@ def mark_task_as_completed(task_description, ethereum_address, cursor, conn):
 # Функция для выполнения одной задачи для конкретного кошелька Ethereum
 def execute_one_task_for_ethereum_address(ethereum_address, cursor, conn, try_again):
     execute_random_task(ethereum_address, cursor, conn, try_again)
-    tm = random.randint(30, 300)
+    tm = random.randint(5, 10)
     logger.info(f'Спим {tm}')
     time.sleep(tm)   # задержка
 
