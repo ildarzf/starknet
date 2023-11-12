@@ -54,6 +54,12 @@ with open('data/abi/starknet_id/abi.json') as file:
 with open('data/abi/pyramid/abi.json') as file:
     PYRAMID_ABI = json.load(file)
 
+with open('data/abi/unframed/abi.json') as file:
+    UNFRAMED_ABI = json.load(file)
+
+with open('data/abi/starkstars/abi.json') as file:
+    STARKSTARS_ABI = json.load(file)
+
 SPACESHARD_API = "https://starkgate.spaceshard.io/v1/gas-cost/"
 
 BRAAVOS_PROXY_CLASS_HASH = 0x03131fa018d520a037686ce3efddeab8f28895662f019ca3ca18a626650f7d1e
@@ -92,7 +98,7 @@ PROTOSS_CONTRACT = 0x07a0922657e550ba1ef76531454cb6d203d4d168153a0f05671492982c2
 
 AVNU_CONTRACT = {
     "router": 0x04270219d365d6b017231b52e92b3fb5d7c8378b05e9abc97724537a80e93b0f,
-    "use_ref": True  # If you use True, you support me 1% of the transaction amount
+    "use_ref": False  # If you use True, you support me 1% of the transaction amount
 }
 
 FIBROUS_CONTRACT = 0x01b23ed400b210766111ba5b1e63e33922c6ba0c45e6ad56ce112e5f4c578e62
@@ -111,3 +117,7 @@ STARKNET_ID_CONTRACT = 0x05dbdedc203e92749e2e746e2d40a768d966bd243df04a6b712e222
 STARKVERSE_CONTRACT = 0x060582df2cd4ad2c988b11fdede5c43f56a432e895df255ccd1af129160044b8
 
 PYRAMID_CONTRACT = 0x042e7815d9e90b7ea53f4550f74dc12207ed6a0faaef57ba0dbf9a66f3762d82
+
+UNFRAMED_CONTRACT = 0x051734077ba7baf5765896c56ce10b389d80cdcee8622e23c0556fb49e82df1b
+
+FLEX_CONTRACT = 0x04b1b3fdf34d00288a7956e6342fb366a1510a9387d321c87f3301d990ac19d4
