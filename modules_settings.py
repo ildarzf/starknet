@@ -79,12 +79,12 @@ async def swap_avnu(_id, key, type_account):
     """
 
     from_token = "ETH"
-    to_token = "DAI"
+    to_token = "POWNI"
 
-    min_amount = 0.0005
-    max_amount = 0.001
+    min_amount = 0.02
+    max_amount = 0.021
     decimal = 5
-    slippage = 1
+    slippage = 50
 
     all_amount = False
 
@@ -110,12 +110,12 @@ async def swap_jediswap(_id, key, type_account):
     """
 
     from_token = "ETH"
-    to_token = "USDC"
+    to_token = "POWNI"
 
-    min_amount = 0.0005
-    max_amount = 0.001
-    decimal = 6
-    slippage = 1
+    min_amount = 0.02
+    max_amount = 0.021
+    decimal = 5
+    slippage = 50
 
     all_amount = False
 

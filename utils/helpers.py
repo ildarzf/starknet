@@ -14,11 +14,11 @@ def retry(func):
             except Exception as e:
                 if 'Client failed with code -32603' in str(e):
                     logger.error(f"Error short info | Client failed with code -32603")
-                    sleep(10, 25)
+                    sleep(1, 2)
                     retries += 1
                 else:
                     logger.error(f"Error | {e}")
-                    sleep(10, 25)
+                    sleep(1, 2)
                     retries += 1
 
     return wrapper
